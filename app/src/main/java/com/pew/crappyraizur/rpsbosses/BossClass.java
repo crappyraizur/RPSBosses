@@ -10,12 +10,12 @@ public class BossClass {
     int bossLevel;
     int bossChoice = 1;
     Random rand = new Random();
-    String play;
+    String bossHand;
     public BossClass(int level){
         bossLevel = level;
     }
 
-    public String play(String userInput){
+    public String[] play(String userInput){
         String[] choicesRPS = {"R", "P", "S"};
         String[] choicesRS = {"R", "S"};
         String[] choicesPS = {"P", "S"};
@@ -24,68 +24,157 @@ public class BossClass {
             switch(bossChoice) {
                 case 1:
                     bossChoice = 2;
-                    return "R";
+                    bossHand = "R";
+                    if(userInput.equals("P"))
+                        return new String[] { "You won", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
                 case 2:
                     bossChoice = 3;
-                    return "P";
+                    bossHand = "P";
+                    if(userInput.equals("S"))
+                        return new String[] { "You won", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
+
                 case 3:
                     bossChoice = 1;
-                    return "S";
+                    bossHand = "S";
+                    if(userInput.equals("R"))
+                        return new String[] { "You won", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
+
             }
         }
         else if (bossLevel == 2){
             switch(bossChoice) {
                 case 1:
                     bossChoice = 2;
-                    return "P";
+                    bossHand = "P";
+                    if(userInput.equals("S"))
+                        return new String[] { "You won", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
+
                 case 2:
                     bossChoice = 3;
-                    return "S";
+                    bossHand = "S";
+                    if(userInput.equals("R"))
+                        return new String[] { "You won", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
+
                 case 3:
                     bossChoice = 1;
-                    return "R";
+                    bossHand = "R";
+                    if(userInput.equals("P"))
+                        return new String[] { "You won", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
+
             }
         }
         else if (bossLevel == 3){
             switch(bossChoice) {
                 case 1:
                     bossChoice = 2;
-                    return choicesRS[randNum(1,0)];
+                    bossHand = choicesRS[randNum(1,0)];
+                    if((userInput.equals("P") && bossHand.equals("R")) || (userInput.equals("R") && bossHand.equals("S")))
+                        return new String[] { "You won", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
+
                 case 2:
                     bossChoice = 3;
-                    return choicesPS[randNum(1,0)];
+                    bossHand = choicesPS[randNum(1,0)];
+                    if((userInput.equals("S") && bossHand.equals("P")) || (userInput.equals("R") && bossHand.equals("S")))
+                        return new String[] { "You won", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
+
                 case 3:
                     bossChoice = 1;
-                    return "S";
+                    bossHand = "S";
+                    if(userInput.equals("R"))
+                        return new String[] { "You won", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
+
             }
         }
         else if (bossLevel == 4){
             switch(bossChoice) {
                 case 1:
                     bossChoice = 2;
-                    return choicesRP[randNum(1,0)];
+                    bossHand = choicesRP[randNum(1,0)];
+                    if((userInput.equals("S") && bossHand.equals("P")) || (userInput.equals("P") && bossHand.equals("R")))
+                        return new String[] { "You won", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
+
                 case 2:
                     bossChoice = 3;
-                    return "P";
+                    bossHand = "P";
+                    if(userInput.equals("S"))
+                        return new String[] { "You won", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
+
                 case 3:
                     bossChoice = 1;
-                    return choicesPS[randNum(1,0)];
+                    bossHand = choicesPS[randNum(1,0)];
+                    if((userInput.equals("S") && bossHand.equals("P")) || (userInput.equals("R") && bossHand.equals("S")))
+                        return new String[] { "You won", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
+
             }
         }
         else if (bossLevel == 5){
             switch(bossChoice) {
                 case 1:
                     bossChoice = 2;
-                    return choicesRPS[randNum(2,0)];
+                    bossHand = choicesRPS[randNum(2,0)];
+                    if((userInput.equals("S") && bossHand.equals("P")) || (userInput.equals("R") && bossHand.equals("S")) || (userInput.equals("P") && bossHand.equals("R")))
+                        return new String[] { "You won", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
+
                 case 2:
                     bossChoice = 3;
-                    return choicesRPS[randNum(2,0)];
+                    bossHand = choicesRPS[randNum(2,0)];
+                    if((userInput.equals("S") && bossHand.equals("P")) || (userInput.equals("R") && bossHand.equals("S")) || (userInput.equals("P") && bossHand.equals("R")))
+                        return new String[] { "You won", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
+
                 case 3:
                     bossChoice = 1;
-                    return choicesRPS[randNum(2,0)];
+                    bossHand = choicesRPS[randNum(2,0)];
+                    if((userInput.equals("S") && bossHand.equals("P")) || (userInput.equals("R") && bossHand.equals("S")) || (userInput.equals("P") && bossHand.equals("R")))
+                        return new String[] { "Draw", bossHand};
+                    else if(userInput.equals(bossHand))
+                        return new String[] { "Draw", bossHand};
+                    return new String[] { "You lost", bossHand};
+
             }
         }
-        return "NOPE";
+        return new String[] { "ERROR", "404"};
     }
 
     private int randNum(int max, int min){
