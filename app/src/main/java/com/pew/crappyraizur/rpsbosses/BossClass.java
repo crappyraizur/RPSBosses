@@ -7,6 +7,7 @@ import java.util.Random;
 import java.security.SecureRandom;
 
 // TODO: MAKE JAVA LEARN HOW TO EXPECT HUMAN REACTIONS
+// because random won't cut it so I need the computer to be smarter.
 // TODO: Implement psychology into level 4 and 5 and make the randomness into level 3. Test and change accordingly
 
 public class BossClass {
