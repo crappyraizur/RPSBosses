@@ -4,13 +4,20 @@ package com.pew.crappyraizur.rpsbosses;
  * Created by ziizo on 12/5/2017.
  */
 import java.util.Random;
+import java.security.SecureRandom;
 
+// TODO: MAKE JAVA LEARN HOW TO EXPECT HUMAN REACTIONS
+// TODO: Implement psychology into level 4 and 5 and make the randomness into level 3. Test and change accordingly
 
 public class BossClass {
     int bossLevel;
     int bossChoice = 1;
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     String bossHand;
+    static int lossbyrock;
+    static int lossbypaper;
+    static int lossbyscissor;
+
     public BossClass(int level){
         bossLevel = level;
     }
@@ -20,6 +27,7 @@ public class BossClass {
         String[] choicesRS = {"R", "S"};
         String[] choicesPS = {"P", "S"};
         String[] choicesRP = {"R", "P"};
+        int lossByRock = 0;
         if (bossLevel == 1){
             switch(bossChoice) {
                 case 1:
@@ -167,7 +175,7 @@ public class BossClass {
                     bossChoice = 1;
                     bossHand = choicesRPS[randNum(2,0)];
                     if((userInput.equals("S") && bossHand.equals("P")) || (userInput.equals("R") && bossHand.equals("S")) || (userInput.equals("P") && bossHand.equals("R")))
-                        return new String[] { "Draw", bossHand};
+                        return new String[] { "You won", bossHand};
                     else if(userInput.equals(bossHand))
                         return new String[] { "Draw", bossHand};
                     return new String[] { "You lost", bossHand};
@@ -178,8 +186,29 @@ public class BossClass {
     }
 
     private int randNum(int max, int min){
-        int  n = rand.nextInt(max) + min;
+        int  n = rand.nextInt(max+1) + min;
         return n;
     }
+
+    public static void main(String[] args){
+        int n;
+        BossClass boss = new BossClass(1);
+        int zero = 0;
+        int one = 0;
+        int two = 0;
+        for (int i = 0; i < 3; i++){
+            n = boss.randNum(2,0);
+            if (n==1)
+                one++;
+            else if (n==0)
+                zero++;
+            else
+                two++;
+            System.out.println(n);
+        }
+        System.out.println("1: " + one + " 2: " + two + " 0: " + zero+ ".");
+
+    }
+
 
 }

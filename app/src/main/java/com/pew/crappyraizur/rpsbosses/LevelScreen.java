@@ -34,6 +34,35 @@ public class LevelScreen extends AppCompatActivity {
             }
         });
 
+        level2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent menuToLevel = new Intent(LevelScreen.this, BossTwo.class);
+                startActivity(menuToLevel);
+            }
+        });
+
+        level3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent menuToLevel = new Intent(LevelScreen.this, BossThree.class);
+                startActivity(menuToLevel);
+            }
+        });
+
+        level4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent menuToLevel = new Intent(LevelScreen.this, BossFour.class);
+                startActivity(menuToLevel);
+            }
+        });
+
+        level5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent menuToLevel = new Intent(LevelScreen.this, BossFive.class);
+                startActivity(menuToLevel);
+            }
+        });
+
+
 
     }
 }
