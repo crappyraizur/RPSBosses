@@ -17,7 +17,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".LevelScreen" />
-        <activity android:name=".BossOne"></activity>
+        <activity android:name=".BossOne" />
+        <activity android:name=".BossTwo" />
+        <activity android:name=".BossThree" />
+        <activity android:name=".BossFour" />
+        <activity android:name=".BossFive"></activity>
     </application>
 
 </manifest>
