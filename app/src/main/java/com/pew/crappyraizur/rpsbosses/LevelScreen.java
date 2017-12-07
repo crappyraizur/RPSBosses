@@ -15,6 +15,7 @@ public class LevelScreen extends AppCompatActivity {
     Button level3;
     Button level4;
     Button level5;
+    Button home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class LevelScreen extends AppCompatActivity {
         level3 = findViewById(R.id.levelThreeButton);
         level4 = findViewById(R.id.levelFourButton);
         level5 = findViewById(R.id.levelFiveButton);
+        home = findViewById(R.id.home);
 
         level1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -62,6 +64,12 @@ public class LevelScreen extends AppCompatActivity {
             }
         });
 
+        home.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent menuToLevel = new Intent(LevelScreen.this, MainMenu.class);
+                startActivity(menuToLevel);
+            }
+        });
 
 
     }

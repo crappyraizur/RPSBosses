@@ -28,6 +28,7 @@ public class BossOne extends AppCompatActivity {
     TextView bossChoice;
 
     TextView gameState;
+    TextView roundNum;
 
     Button rock;
     Button paper;
@@ -36,6 +37,7 @@ public class BossOne extends AppCompatActivity {
     Context context = this;
     MediaPlayer mp;
     MediaPlayer hit;
+    MediaPlayer bossHit;
 
     ImageView bossImage;
 
@@ -43,6 +45,7 @@ public class BossOne extends AppCompatActivity {
 
     int userDataScore = 0;
     int bossDataScore= 0;
+    int currRound = 1;
 
     String bossHand;
 
@@ -56,14 +59,17 @@ public class BossOne extends AppCompatActivity {
 
         mp = MediaPlayer.create(context, R.raw.regularbattle);
         hit = MediaPlayer.create(context, R.raw.hit);
+        bossHit = MediaPlayer.create(context, R.raw.lunawin);
 
         userScore = findViewById(R.id.userScore);
         bossScore = findViewById(R.id.bossScore);
+
 
         userChoice = findViewById(R.id.userChoice);
         bossChoice = findViewById(R.id.bossChoice);
 
         gameState = findViewById(R.id.GameState);
+        roundNum = findViewById(R.id.round);
 
         rock = findViewById(R.id.rock);
         paper = findViewById(R.id.paper);
@@ -78,7 +84,8 @@ public class BossOne extends AppCompatActivity {
             public void onClick(View v) {
                 play("R");
                 userChoice.setText("Rock");
-
+                currRound++;
+                roundNum.setText(""+currRound);
 
             }
         });
@@ -87,6 +94,8 @@ public class BossOne extends AppCompatActivity {
             public void onClick(View v) {
                 play("P");
                 userChoice.setText("Paper");
+                currRound++;
+                roundNum.setText(""+currRound);
             }
         });
 
@@ -94,6 +103,8 @@ public class BossOne extends AppCompatActivity {
             public void onClick(View v) {
                 play("S");
                 userChoice.setText("Scissor");
+                currRound++;
+                roundNum.setText(""+currRound);
             }
         });
 
@@ -134,10 +145,13 @@ public class BossOne extends AppCompatActivity {
         else if (returnedStat[0].contains("lost")){
             bossDataScore++;
             bossScore.setText("boss score: " + bossDataScore);
+            Animation updown = AnimationUtils.loadAnimation(this, R.anim.updown);
+            findViewById(R.id.bossPic).startAnimation(updown);
+            bossHit.start();
         }
 
         if (userDataScore >= 3){
-            Toast.makeText(getApplicationContext(), "You won, you are now able to access the second boss!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "You won, you are now able to access the next boss!", Toast.LENGTH_LONG).show();
             mp.stop();
             Intent menuToLevel = new Intent(BossOne.this, LevelScreen.class);
             startActivity(menuToLevel);

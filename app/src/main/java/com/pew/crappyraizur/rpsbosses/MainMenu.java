@@ -30,6 +30,12 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(menuToLevel);
             }
         });
+        about.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent menuToLevel = new Intent(MainMenu.this, AboutPage.class);
+                startActivity(menuToLevel);
+            }
+        });
 
 
 
